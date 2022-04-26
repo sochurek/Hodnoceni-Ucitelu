@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <base href="/localhost">
+        <meta charset="UTF-8">
+        <title><?= $title ?></title>
+        <meta name="description" content="<?= $description ?>">
+        <meta name="keywords" content="<?= $key_words ?>">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="stylesheet" href="/vendor/css/styl.css">
+    </head>
+    <body>
+
+    <main>
+        <?php $this->controller->renderView(); ?>
+    </main>
+
+    </body>
+</html>
