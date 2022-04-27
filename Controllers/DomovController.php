@@ -5,6 +5,7 @@ class DomovController extends Controller {
         $this->header["title"] = "Domovská stránka";
         $this->header["description"] = "Hlavní stránka našeho webu";
 
+        
         // Setup layout
         $this->view = "domov";
 

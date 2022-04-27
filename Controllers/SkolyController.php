@@ -6,6 +6,9 @@ class SkolyController extends Controller {
         $this->header["title"] = "Školy";
         $this->header["description"] = "Výpis škol";
 
+
+        $this->data["schools"] = SchoolManager::getAllSchools();
+
         // Setup layout
         $this->view = "skoly";
 

@@ -8,7 +8,6 @@ abstract class Controller {
     protected string $view = "";
     protected array $header = array(
         "title" => "",
-        "key_words" => "",
         "description" => ""
     );
 

@@ -9,7 +9,7 @@
             <style>
             header{
                 background-color: #8B0000;
-                position: sticky;
+                position: relative;
                 top: 0;
                 padding:20px 0px 20px 0px;
                 color:white;
@@ -134,6 +134,55 @@
             </style>
         </head>
         <body>
+            <header>
+                <div class="header1">Hodnocení učitelů</div>
+                <div class="header2">Největší portál hodnocení škol a učitelů v česku!</div>
+            </header>
+            <main>
+            <div class="menu">
+                <a href="/domov">DOMOV</a>
+                <a href="/skoly">ŠKOLY</a>
+                <a href="/ucitel">PROFESOŘI</a>
+                <div class="menuk">
+                    <a href="/komentar">KOMENTÁŘE</a>
+                </div>
+            </div>
             
+            
+            
+            <?php if(isset($schools)): ?>
+                <section class=row>
+                    <section class=row>
+                        <h1>Školy</h1>
+                    </section>
+
+                    <div class="skoly" style="margin-left:40%;">
+                    <?php foreach($schools as $school): ?>
+                        <article class=row>
+                            <?php if(isset($school["obrazek"])): ?>
+                                <img style="height: 250px;" 
+                                alt="<?= $school["nazev"] ?>-obrazek" 
+                                src="<?= $school["obrazek"] ?>">
+                            <?php endif; ?>
+                            <a href="/skoly/<?= $school["id"] ?>">
+                                <h3><?= $school["nazev"] ?></h3>
+                            </a>
+                            <p>
+                                Adresa: 
+                                <?= $school["adresa"] ?>
+                            </p>
+                            <p>
+                                Kontaktní email:
+                                <?= $school["email"] ?>
+                            </p>
+                            </article>
+                            <br>
+                            <br>
+                    <?php endforeach; ?>
+                    </div>
+                </section>
+            <?php endif; ?>
+
+            </main>
         </body>
     </html>
