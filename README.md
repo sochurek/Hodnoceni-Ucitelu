@@ -1,1 +1,2 @@
-# MVC-framework
+# Hodnocení Učitelů
+Závěrečná práce z webových aplikací.

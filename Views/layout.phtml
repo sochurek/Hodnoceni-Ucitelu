@@ -5,13 +5,27 @@
         <meta charset="UTF-8">
         <title><?= $title ?></title>
         <meta name="description" content="<?= $description ?>">
-        <meta name="keywords" content="<?= $key_words ?>">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
         <link rel="stylesheet" href="/vendor/css/styl.css">
     </head>
+
     <body>
 
+    <header>
+        <div class="header1">Hodnocení učitelů</div>
+        <div class="header2">Největší portál hodnocení škol a učitelů v česku!</div>
+    </header>
+        
+        <div class="menu">
+        <a href="/domov">DOMOV</a>
+        <a href="/skoly">ŠKOLY</a>
+        <a href="/ucitele">UČITELE</a>
+            <div class="menuk">
+                <a href="/komentar">KOMENTÁŘE</a>
+            </div>
+        </div>
+                
     <main>
         <?php $this->controller->renderView(); ?>
     </main>

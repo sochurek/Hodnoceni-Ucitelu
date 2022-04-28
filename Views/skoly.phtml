@@ -1,188 +1,41 @@
-<!DOCTYPE html>
-    <html lang="cs">
-        <head>
-            <meta charset="UTF-8">
-            <meta http-equiv="X-UA-Compatible" content="IE=edge">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Výpis Škol</title>
+<?php if(isset($schools)): ?>
+    <section class=row>
+        
+        <div class="skolaNP">
+            <h1>Školy</h1>
+        </div>
 
-            <style>
-            header{
-                background-color: #8B0000;
-                position: relative;
-                top: 0;
-                padding:20px 0px 20px 0px;
-                color:white;
-                margin: 0 auto;
-                overflow: hidden;
-            }
+        <div class="skoly">
 
-            .header1 {
-                font-size:40px;
-                color: ;
-                font-weight:bold;
-                padding:10px 0px 10px 0px;
-                margin-left: 10px;
-            }
-            .header2 {
-                font-size:17px;
-                margin-left:10px;
-                margin-bottom:15px;
-            }
-
-            body {
-            margin: 0 auto;
-            background-position:center;
-            background-size: contain;
-            background-color: #f0f0f5;
-            }
-
-            .menu {  
-            position: sticky;
-            top: 0;
-            background-color: #990000;
-            padding:10px 0px 10px 0px;
-            color:white;
-            margin: 0 auto;
-            overflow: hidden;
-            }
-
-            .menu a {
-            float: left;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-            font-size: 20px;
-            }
+        <?php foreach($schools as $school): ?>
+            <article class=row>
+                <?php if(isset($school["obrazek"])): ?>
+                    <img style="height: 250px;" 
+                    alt="<?= $school["nazev"] ?>-obrazek" 
+                    src="<?= $school["obrazek"] ?>">
+                <?php endif; ?>
+                
+                <a href="/skoly/<?= $school["id"] ?>">
+                <h3><?= $school["nazev"] ?></h3>
+                </a>
+                
+                <p>
+                Adresa: 
+                <?= $school["adresa"] ?>
+                </p>
+                
+                <p>
+                Kontaktní email:
+                <?= $school["email"] ?>
+                </p>
+                
+            </article>
             
-            .menuk {
-            right: auto;
-            float: right;
-            }
+            <br>
+            <br>
+        <?php endforeach; ?>
 
-            footer {
-            width: 100%;
-            bottom: 0px;
-            background-color: #8B0000;
-            color: #fff;
-            position: absolute;
-            padding-top:20px;
-            padding-bottom:50px;
-            text-align:center;
-            font-size:30px;
-            font-weight:bold;
-            }
-
-            .container{
-            padding: 0 32%;
-            }
-
-            h1{
-            font-size: 4vw;
-            font-weight: 500;
-            color: black;
-            text-align: center;
-            padding-top: 17%;
-            }
-
-            .hledat{
-            background: white;
-            width: 65%;
-            margin: 30px auto;
-            padding: 8px 12px 8px 35px;
-            border-radius: 50px;
-            }
-
-            .hledat form{
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            }
-
-            .hledat form input{
-            margin-top: 5px;
-            display: block;
-            border: 0;
-            outline: none;
-             background: transparent;
-            }
-
-            .hledat form button{
-            background: #8B0000;
-            width: 55px;
-            height: 55px;
-            border-radius: 50px;
-            border: 0;
-            outline: none;
-            cursor: pointer;
-            }
-
-            .hledat form button img{
-            width: 15px;
-            margin-top: 5px;
-            }
-
-            .hledat form label{
-            font-weight: 600;
-            }
-
-            .hledat-ucitel{
-                flex: 1;
-            }
-
-            </style>
-        </head>
-        <body>
-            <header>
-                <div class="header1">Hodnocení učitelů</div>
-                <div class="header2">Největší portál hodnocení škol a učitelů v česku!</div>
-            </header>
-            <main>
-            <div class="menu">
-                <a href="/domov">DOMOV</a>
-                <a href="/skoly">ŠKOLY</a>
-                <a href="/ucitel">PROFESOŘI</a>
-                <div class="menuk">
-                    <a href="/komentar">KOMENTÁŘE</a>
-                </div>
-            </div>
-            
-            
-            
-            <?php if(isset($schools)): ?>
-                <section class=row>
-                    <section class=row>
-                        <h1>Školy</h1>
-                    </section>
-
-                    <div class="skoly" style="margin-left:40%;">
-                    <?php foreach($schools as $school): ?>
-                        <article class=row>
-                            <?php if(isset($school["obrazek"])): ?>
-                                <img style="height: 250px;" 
-                                alt="<?= $school["nazev"] ?>-obrazek" 
-                                src="<?= $school["obrazek"] ?>">
-                            <?php endif; ?>
-                            <a href="/skoly/<?= $school["id"] ?>">
-                                <h3><?= $school["nazev"] ?></h3>
-                            </a>
-                            <p>
-                                Adresa: 
-                                <?= $school["adresa"] ?>
-                            </p>
-                            <p>
-                                Kontaktní email:
-                                <?= $school["email"] ?>
-                            </p>
-                            </article>
-                            <br>
-                            <br>
-                    <?php endforeach; ?>
-                    </div>
-                </section>
-            <?php endif; ?>
-
-            </main>
-        </body>
-    </html>
+        </div>
+    </section>
+    
+<?php endif; ?>
