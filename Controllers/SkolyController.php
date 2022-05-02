@@ -14,7 +14,3 @@ class SkolyController extends Controller {
 
     }
 }
-
-
-
-?>

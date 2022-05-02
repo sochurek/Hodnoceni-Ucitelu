@@ -1,17 +1,22 @@
 <?php
-class UcitelManager {
-    public static function getAllUcitel(): array {
+class UcitelManager
+{
+    public static function getAllUcitel(): array
+    {
         return Db::query("
-            SELECT *
-            FROM HU.ucitel");
+            SELECT skola.nazev, ucitel.id, ucitel.jmeno, ucitel.obrazek, ucitel.email
+            FROM HU.skola
+            INNER JOIN ucitel on skola.id = ucitel.skola_id;");
     }
 
-    public static function getUcitelByID(int $ID): array {
+    public static function getUcitelByID(int $ID): array
+    {
         return Db::query("
-            SELECT *
-            FROM HU.ucitel
-            WHERE id = :id", array(
-                ":id" => $id,
-            ));
+            SELECT skola.nazev,ucitel.id,ucitel.jmeno,ucitel.obrazek,ucitel.email
+            FROM HU.skola
+            INNER JOIN skola.id = ucitel.skola_id
+            WHERE ucitel.id = :id", array(
+            ":id" => $id,
+        ));
     }
 }

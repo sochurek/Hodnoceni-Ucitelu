@@ -16,13 +16,17 @@
                             <img style="height: 250px;" alt="<?= $ucitel["jmeno"] ?>-obrazek" src="<?= $ucitel["obrazek"] ?>">
                         <?php endif; ?>
 
-                        <a href="/ucitel/<?= $ucitel["id"] ?>">
+                        <a href="/ucitele/<?= $ucitel["id"] ?>">
                             <h3><?= $ucitel["jmeno"] ?></h3>
                         </a>
 
                         <p>
                             Kontaktní email:
                             <?= $ucitel["email"] ?>
+                        </p>
+
+                        <p>
+                            Pracuje v: <?= $ucitel["nazev"] ?>
                         </p>
 
                     </article>

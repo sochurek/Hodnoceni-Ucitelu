@@ -1,6 +1,7 @@
 <?php
 
-abstract class Controller {
+abstract class Controller
+{
     /**
      * Basic data for sites
      */
@@ -22,15 +23,17 @@ abstract class Controller {
      * Render view for controller
      * @return void
      */
-    public function renderView() {
+    public function renderView()
+    {
         if ($this->view) {
             extract($this->data);
-            require("Views/".$this->view.".phtml");
+            require("Views/" . $this->view . ".phtml");
         }
     }
 
-    public function redirect($url) {
+    public function redirect($url)
+    {
         header("Location: /$url");
         header("Connection: close");
     }
- }
+}

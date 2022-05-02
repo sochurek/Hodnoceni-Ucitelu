@@ -14,7 +14,3 @@ class UciteleController extends Controller {
 
     }
 }
-
-
-
-?>
