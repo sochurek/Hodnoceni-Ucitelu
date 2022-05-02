@@ -1,41 +1,43 @@
-<?php if(isset($schools)): ?>
-    <section class=row>
-        
-        <div class="skolaNP">
-            <h1>Školy</h1>
-        </div>
+<?php if (isset($schools)) : ?>
+    <section>
+        <div class="container">
 
-        <div class="skoly">
+            <div class="row" class="text-center">
+                <h1>Školy</h1>
+            </div>
 
-        <?php foreach($schools as $school): ?>
-            <article class=row>
-                <?php if(isset($school["obrazek"])): ?>
-                    <img style="height: 250px;" 
-                    alt="<?= $school["nazev"] ?>-obrazek" 
-                    src="<?= $school["obrazek"] ?>">
-                <?php endif; ?>
-                
-                <a href="/skoly/<?= $school["id"] ?>">
-                <h3><?= $school["nazev"] ?></h3>
-                </a>
-                
-                <p>
-                Adresa: 
-                <?= $school["adresa"] ?>
-                </p>
-                
-                <p>
-                Kontaktní email:
-                <?= $school["email"] ?>
-                </p>
-                
-            </article>
-            
-            <br>
-            <br>
-        <?php endforeach; ?>
+
+            <div class="row text-center">
+
+                <?php foreach ($schools as $school) : ?>
+                    <article class=row>
+
+                        <?php if (isset($school["obrazek"])) : ?>
+                            <img style="height: 250px;" alt="<?= $school["nazev"] ?>-obrazek" src="<?= $school["obrazek"] ?>">
+                        <?php endif; ?>
+
+                        <a href="/skoly/<?= $school["id"] ?>">
+                            <h3><?= $school["nazev"] ?></h3>
+                        </a>
+
+                        <p>
+                            Adresa:
+                            <?= $school["adresa"] ?>
+                        </p>
+
+                        <p>
+                            Kontaktní email:
+                            <?= $school["email"] ?>
+                        </p>
+
+                    </article>
+
+                    <br>
+                    <br>
+                <?php endforeach; ?>
+            </div>
 
         </div>
     </section>
-    
+
 <?php endif; ?>

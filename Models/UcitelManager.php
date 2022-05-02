@@ -1,15 +1,15 @@
 <?php
-class SchoolManager {
-    public static function getAllSchools(): array {
+class UcitelManager {
+    public static function getAllUcitel(): array {
         return Db::query("
             SELECT *
-            FROM HU.skola");
+            FROM HU.ucitel");
     }
 
-    public static function getSchoolByID(int $ID): array {
+    public static function getUcitelByID(int $ID): array {
         return Db::query("
             SELECT *
-            FROM HU.skola
+            FROM HU.ucitel
             WHERE id = :id", array(
                 ":id" => $id,
             ));

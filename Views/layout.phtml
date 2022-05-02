@@ -1,34 +1,44 @@
 <!DOCTYPE html>
 <html lang="cs">
-    <head>
-        <base href="/localhost">
-        <meta charset="UTF-8">
-        <title><?= $title ?></title>
-        <meta name="description" content="<?= $description ?>">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="/vendor/css/styl.css">
-    </head>
 
-    <body>
+<head>
+    <base href="/localhost">
+    <meta charset="UTF-8">
+
+    <title><?= $title ?></title>
+
+    <meta name="description" content="<?= $description ?>">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link rel="stylesheet" href="/vendor/css/styl.css">
+
+</head>
+
+<body>
 
     <header>
         <div class="header1">Hodnocení učitelů</div>
         <div class="header2">Největší portál hodnocení škol a učitelů v česku!</div>
     </header>
-        
-        <div class="menu">
+
+    <div class="menu">
         <a href="/domov">DOMOV</a>
         <a href="/skoly">ŠKOLY</a>
-        <a href="/ucitele">UČITELE</a>
-            <div class="menuk">
-                <a href="/komentar">KOMENTÁŘE</a>
-            </div>
+        <a href="/ucitele">UČITELÉ</a>
+        <div class="menuk">
+            <a href="/komentar">KOMENTÁŘE</a>
         </div>
-                
+    </div>
+
     <main>
         <?php $this->controller->renderView(); ?>
     </main>
 
-    </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+</body>
+
 </html>

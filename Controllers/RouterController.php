@@ -1,13 +1,19 @@
 <?php
-class RouterController extends Controller {
+class RouterController extends Controller
+{
     protected $controller;
 
-    private function makeCamel(string $text): string {
-        return str_replace(' ', '',
-            ucwords(str_replace('-', '', $text)));
+    private function makeCamel(string $text): string
+    {
+        return str_replace(
+            ' ',
+            '',
+            ucwords(str_replace('-', '', $text))
+        );
     }
 
-    private function parseURL(string $url) {
+    private function parseURL(string $url)
+    {
         // Parse url
         $parsed = parse_url($url);
         // Trim left side of path (domain)
@@ -18,15 +24,16 @@ class RouterController extends Controller {
         return explode("/", $parsed["path"]);
     }
 
-    public function process($params) {
+    public function process($params)
+    {
         // $params[0] = url adresa
         $parsed = $this->parseURL($params[0]);
         if (empty($parsed[0]))
             $this->redirect("domov");
         //print_r($parsed);
-        $controllerClass = $this->makeCamel(array_shift($parsed)). "Controller";
+        $controllerClass = $this->makeCamel(array_shift($parsed)) . "Controller";
         //print_r($controllerClass);
-        if (file_exists("Controllers/".$controllerClass.".php"))
+        if (file_exists("Controllers/" . $controllerClass . ".php"))
             $this->controller = new $controllerClass;
         else
             $this->redirect("error");
@@ -40,5 +47,4 @@ class RouterController extends Controller {
 
         $this->view = "layout";
     }
-
 }
