@@ -77,12 +77,12 @@ h1 {
 }
 
 .hledatD {
-  width: 65% !important;
+  width: 80% !important;
 }
 
 .hledat {
   background: white;
-  width: 100%;
+  width: 65%;
   margin: 30px auto;
   padding: 8px 12px 8px 35px;
   border-radius: 50px;

@@ -1,0 +1,21 @@
+<div class="container">
+
+    <?php if (isset($ucitel->obrazek)) : ?>
+        <img style="height: 250px;" alt="<?= $ucitel->jmeno ?>-obrazek" src="<?= $ucitel->obrazek ?>">
+    <?php endif; ?>
+
+    <h3><?= $ucitel->jmeno ?></h3>
+
+    <p>
+        Kontaktní email:
+        <?= $ucitel->email ?>
+    </p>
+
+    <a href="/skola/<?= $ucitel->skola_id ?>">
+        <p>Pracuje v: <?= $ucitel->skola_nazev ?></p>
+    </a>
+    <p>
+
+    </p>
+
+</div>

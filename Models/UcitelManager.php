@@ -4,19 +4,22 @@ class UcitelManager
     public static function getAllUcitel(): array
     {
         return Db::query("
-            SELECT skola.nazev, ucitel.id, ucitel.jmeno, ucitel.obrazek, ucitel.email
+            SELECT skola.nazev, skola.id as skola_id, ucitel.id, ucitel.jmeno, ucitel.obrazek, ucitel.email
             FROM HU.skola
             INNER JOIN ucitel on skola.id = ucitel.skola_id;");
     }
 
-    public static function getUcitelByID(int $ID): array
+    public static function getUcitelByID(int $ID)
     {
-        return Db::query("
-            SELECT skola.nazev,ucitel.id,ucitel.jmeno,ucitel.obrazek,ucitel.email
+        $ucitel = Db::singleQuery("
+            SELECT skola.nazev, skola.id as skola_id,ucitel.id, ucitel.jmeno, ucitel.obrazek, ucitel.email
             FROM HU.skola
-            INNER JOIN skola.id = ucitel.skola_id
-            WHERE ucitel.id = :id", array(
-            ":id" => $id,
-        ));
+            INNER JOIN ucitel on skola.id = ucitel.skola_id
+            WHERE ucitel.id = $ID");
+
+            return new Ucitel($ucitel["nazev"],$ucitel["skola_id"], $ucitel["jmeno"],$ucitel["obrazek"],$ucitel["email"]);
+
     }
+
+    public static function getUcitelBySchoolID(int $ID){}
 }

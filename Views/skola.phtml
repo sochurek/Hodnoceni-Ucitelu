@@ -1,0 +1,34 @@
+<div class="container">
+    <?php if (isset($school->obrazek)) : ?>
+        <img style="height: 250px;" alt="<?= $school->nazev ?>-obrazek" src="<?= $school->obrazek ?>">
+    <?php endif; ?>
+
+
+    <h3><?= $school->nazev ?></h3>
+
+    <p>
+        Adresa:
+        <?= $school->adresa ?>
+    </p>
+
+    <p>
+        Kontaktní email:
+        <?= $school->email ?>
+    </p>
+
+    <div class="container">
+
+        <a href="/ucitel/<?= $ucitel->id ?>">
+            <h3><?= $ucitel->jmeno ?></h3>
+        </a>
+
+        <p>
+            Kontaktní email:
+            <?= $ucitel->email ?>
+        </p>
+
+
+    </div>
+
+
+</div>

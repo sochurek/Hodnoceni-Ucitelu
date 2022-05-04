@@ -8,13 +8,14 @@ class SchoolManager
             FROM HU.skola");
     }
 
-    public static function getSchoolByID(int $ID): array
+    public static function getSchoolByID(int $ID)
     {
-        return Db::query("
+        $skola = Db::singleQuery("
             SELECT *
             FROM HU.skola
-            WHERE id = :id", array(
-            ":id" => $id,
-        ));
+            WHERE id = $ID"
+        );
+
+        return new Ucitel($skola["id"],$skola["obrazek"], $skola["adresa"],$skola["email"],$skola["email"]);
     }
 }
