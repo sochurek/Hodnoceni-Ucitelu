@@ -3,7 +3,8 @@ class UcitelManager
 {
     public static function getAllUcitel(): array
     {
-        return Db::query("
+        return Db::query(
+            "
             SELECT skola.nazev, skola.id as skola_id, ucitel.id, ucitel.jmeno, ucitel.obrazek, ucitel.email
             FROM HU.skola
             INNER JOIN ucitel on skola.id = ucitel.skola_id;"

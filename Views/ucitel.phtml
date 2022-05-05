@@ -32,7 +32,7 @@
             </p>
 
             <a href="/ucitel/<?= $ucitel->id ?>">
-                <button onclick="<?= HodnoceniManager::reportHodnoceni($hodnoceni["id"]) ?>" id="hodnoceniBtn">Nahlaš Hodnocení</button>
+                <button onclick="<?php HodnoceniManager::reportHodnoceni($hodnoceni["id"]) ?>" id="hodnoceniBtn">Nahlaš Hodnocení</button>
             </a>
         </article>
 

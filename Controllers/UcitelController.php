@@ -19,6 +19,5 @@ class UcitelController extends Controller
 
         // Setup layout
         $this->view = "ucitel";
-        
     }
 }
