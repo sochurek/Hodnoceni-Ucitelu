@@ -18,16 +18,19 @@
 
     <div class="container">
 
-        <a href="/ucitel/<?= $ucitel->id ?>">
-            <h3><?= $ucitel->jmeno ?></h3>
-        </a>
+        <h3 class="nadpis">Učitelé v této škole</h3>
+        <div class="container">
+            <?php foreach ($ucitele as $ucitel) : ?>
+                <article class=row>
+                    <a href="/ucitel/<?= $ucitel["id"] ?>">
+                        <p><?= $ucitel["jmeno"] ?></p>
+                    </a>
 
-        <p>
-            Kontaktní email:
-            <?= $ucitel->email ?>
-        </p>
+                </article>
 
-
+                <br>
+            <?php endforeach; ?>
+        </div>
     </div>
 
 

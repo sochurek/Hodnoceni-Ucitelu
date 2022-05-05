@@ -10,8 +10,9 @@ class Ucitel
     public string $email;
 
 
-    public function __construct(string $nazev, $skola_id, string $jmeno, $obrazek, string $email)
+    public function __construct(string $nazev, $skola_id, $id, string $jmeno, $obrazek, string $email)
     {
+        $this->id = $id;
         $this->skola_id = $skola_id;
         $this->skola_nazev = $nazev;
         $this->jmeno = $jmeno;

@@ -16,6 +16,6 @@ class SchoolManager
             WHERE id = $ID"
         );
 
-        return new Ucitel($skola["id"],$skola["obrazek"], $skola["adresa"],$skola["email"],$skola["email"]);
+        return new School($skola["id"],$skola["nazev"], $skola["obrazek"],$skola["adresa"],$skola["email"]);
     }
 }

@@ -25,6 +25,7 @@ class Db
         $return->execute($params);
         return $return->fetchAll();
     }
+
     public static function singleQuery($query, $params = array())
     {
         $return = self::$connection->prepare($query);

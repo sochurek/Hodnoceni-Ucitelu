@@ -14,8 +14,29 @@
     <a href="/skola/<?= $ucitel->skola_id ?>">
         <p>Pracuje v: <?= $ucitel->skola_nazev ?></p>
     </a>
-    <p>
 
-    </p>
+    <a href="/vytvorhodnoceni/<?= $ucitel->id ?>">
+        <button id="hodnoceniBtn">Napiš Hodnocení</button>
+    </a>
+
+
+
+    <?php foreach ($hodnocenii as $hodnoceni) : ?>
+
+        <article class=row>
+            <p>
+                Počet hvězd: <?= $hodnoceni["pocet_hvezd"] ?>
+            </p>
+            <p>
+                Hodnocení: <?= $hodnoceni["zprava"] ?>
+            </p>
+
+            <a href="/ucitel/<?= $ucitel->id ?>">
+                <button onclick="<?= HodnoceniManager::reportHodnoceni($hodnoceni["id"]) ?>" id="hodnoceniBtn">Nahlaš Hodnocení</button>
+            </a>
+        </article>
+
+        <br>
+    <?php endforeach; ?>
 
 </div>
