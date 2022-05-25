@@ -30,4 +30,14 @@ class UcitelManager
             INNER JOIN ucitel on skola.id = ucitel.skola_id
             WHERE ucitel.skola_id = $ID;");
     }
+
+    public static function getPrumHvezdUcitel(int $ID)
+    {
+        $hvezdy = Db::singleQuery("
+            SELECT sum(hodnoceni.pocet_hvezd)/count(hodnoceni.ucitel_id) as prumer
+            FROM HU.hodnoceni
+            WHERE ucitel_id = $ID;"
+        );
+        return $hvezdy["prumer"];
+    }
 }

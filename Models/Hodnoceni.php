@@ -7,7 +7,7 @@ class Hodnoceni
     public int $pocet_hvezd;
     public string $zprava;
 
-    public function __construct($id, $ucitel_id, $pocet_hvezd, string $zprava)
+    public function __construct($id, $ucitel_id, $pocet_hvezd, $zprava)
     {
         if($id != null){
         $this->id = $id;

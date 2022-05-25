@@ -1,5 +1,30 @@
 h1 {
-  color: #000000;
+  color: black;
+}
+
+.dark-mode-body {
+  background-color: #000000;
+}
+.dark-mode-header{
+  background-color: #3d0000;
+}
+.dark-mode-menu {
+  background-color: #950101;
+}
+.dark-mode-text {
+  color: #FF0000;
+}
+.light-mode-body {
+  background-color: #f0f0f5;
+}
+.light-mode-header {
+background-color: #8b0000;
+}
+.light-mode-menu{
+background-color: #990000;
+}
+.dark-mode-text{
+color: white;
 }
 
 header {
@@ -144,5 +169,5 @@ h1 {
 }
 
 a {
-  color: #000000;
+  color: black;
 }

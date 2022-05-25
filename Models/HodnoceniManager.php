@@ -1,4 +1,13 @@
 <?php
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+require 'vendor/src/Exception.php';
+require 'vendor/src/PHPMailer.php';
+require 'vendor/src/SMTP.php';
+
 class HodnoceniManager
 {
     public static function getAllHodnoceniByID(int $ID): array
@@ -26,6 +35,12 @@ class HodnoceniManager
 
     public static function insertHodnoceni(Hodnoceni $hodnoceni)
     {
+
+
+
+        //Create an instance; passing `true` enables exceptions
+        $mail = new PHPMailer(true);
+
         Db::singleQuery(
             "
             INSERT INTO HU.hodnoceni
@@ -33,28 +48,31 @@ class HodnoceniManager
             VALUES ($hodnoceni->ucitel_id,$hodnoceni->pocet_hvezd,'$hodnoceni->zprava');"
         );
 
+        //Create an instance; passing `true` enables exceptions
+        $mail = new PHPMailer(true);
 
         $date = date("H:i:s");
+        //Server settings
+        $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      
+        $mail->isSMTP();                                            
+        $mail->Host       = 'smtp.seznam.cz';                     
+        $mail->SMTPAuth   = true;
+        $mail->Username   = 'hu@kevizb.cz';
+        $mail->Password   = 'test123';
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+        $mail->Port       = 465;  
+        $mail->CharSet = 'UTF-8';
 
-        $to = "domca11221@gmail.com";
-        $subject = "Hodnocení zapsáno do DB";
+        
+        $mail->setFrom('hu@kevizb.cz', 'Hodnocení Učitelů');
+        $mail->addAddress('domca11221@gmail.com', 'Dominik Sochůrek');
 
+        
+        $mail->isHTML(false);
+        $mail->Subject = 'Hodnocení zapsáno do DB';
+        $mail->Body    = "Hodnocení pro id učitele:  $hodnoceni->ucitel_id \r\nPočet hvězd: $hodnoceni->pocet_hvezd \r\nZpráva: $hodnoceni->zprava \r\nOdesláno: $date";
 
-        $message = "
-            Hodnocení pro id učitele:  $hodnoceni->ucitel_id \r\n
-            Počet hvězd: $hodnoceni->pocet_hvezd \r\n
-            Zpráva: $hodnoceni->zprava \r\n
-            Odesláno: $date
-        ";
-
-        // Always set content-type when sending HTML email
-        $headers = "MIME-Version: 1.0" . "\r\n";
-        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-
-        // More headers
-        $headers .= 'From: <domca11221@gmail.com>' . "\r\n";
-
-        mail($to, $subject, $message, $headers);
+        $mail->send();
     }
 
     public static function reportHodnoceni(int $ID)
@@ -71,6 +89,5 @@ class HodnoceniManager
         DELETE FROM HU.hodnoceni
         WHERE (id = $ID);
         ");
-
     }
 }

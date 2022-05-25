@@ -19,6 +19,10 @@
         <button id="hodnoceniBtn">Napiš Hodnocení</button>
     </a>
 
+    <br>
+
+    <p>Průměrný počet hvězd: <?= number_format($hvezdy,2) ?></p>
+
 
 
     <?php foreach ($hodnocenii as $hodnoceni) : ?>
@@ -31,12 +35,16 @@
                 Hodnocení: <?= $hodnoceni["zprava"] ?>
             </p>
 
-            <a href="/ucitel/<?= $ucitel->id ?>">
-                <button onclick="<?php HodnoceniManager::reportHodnoceni($hodnoceni["id"]) ?>" id="hodnoceniBtn">Nahlaš Hodnocení</button>
-            </a>
+            <form action="/ucitel/<?= $ucitel->id ?>" method="POST">
+                <input type="hidden" name="report_id" value="<?= $hodnoceni["id"] ?>">
+                <input type="submit" name="report" value="Nahlaš Hodnocení">
+            </form>
+
+
         </article>
 
         <br>
+
     <?php endforeach; ?>
 
 </div>

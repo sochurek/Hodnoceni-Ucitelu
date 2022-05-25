@@ -4,12 +4,12 @@
         <p>Toto je nástroj, jak přidat hodnocení do DB.</p>
     </div>
     <div class=row>
-        <form method=POST action="/vytvorhodnoceni/<?= $idckoo ?>">
+        <form method=POST action="/vytvorhodnoceni/<?= $idckoo?>">
             <label for=pocet_hvezd>Počet hvězd</label>
             <input type="text" name=pocet_hvezd placeholder="Počet hvězd" required>
             <label for=zprava>Hodnocení:</label>
             <textarea rows="5" cols="80" type=text name=zprava placeholder="Hodnocení..." required></textarea>
-            <input type=submit value="Odeslat">
+            <input name="submit_hodnoceni" type=submit value="Odeslat">
         </form>
     </div>
 </div>

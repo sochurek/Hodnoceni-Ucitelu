@@ -209,7 +209,7 @@ class VytvorHodnoceniController extends Controller
         $matches = 0;
 
         if (isset($_POST["zprava"])) {
-
+            $hodnoceni = new Hodnoceni(null, $iducitele, $_POST["pocet_hvezd"], $_POST["zprava"]);
 
             foreach ($sprostaSlova as $slova) {
                 $matches += (strpos($_POST["zprava"], $slova) !== false) ? 1 : 0;
@@ -217,8 +217,17 @@ class VytvorHodnoceniController extends Controller
             if ($matches == 0) {
                 $hodnoceni = new Hodnoceni(null, $iducitele, $_POST["pocet_hvezd"], $_POST["zprava"]);
                 HodnoceniManager::insertHodnoceni($hodnoceni);
+                header("Location: /ucitel/$iducitele");
+                die();
             }
         }
+
+
+
+
+
+
+
 
         // Setup layout
         $this->view = "vytvorhodnoceni";
