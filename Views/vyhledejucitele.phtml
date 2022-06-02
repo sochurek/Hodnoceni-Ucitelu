@@ -16,7 +16,7 @@
                             <img style="height: 250px;" alt="<?= $ucitel["jmeno"] ?>-obrazek" src="<?= $ucitel["obrazek"] ?>">
                         <?php endif; ?>
 
-                      
+
 
                         <a href="/ucitel/<?= $ucitel["id"] ?>">
                             <h3><?= $ucitel["jmeno"] ?></h3>
@@ -27,9 +27,9 @@
                             <?= $ucitel["email"] ?>
                         </p>
 
-                        <p>
-                            Pracuje v: <?= $ucitel["nazev"] ?>
-                        </p>
+                        <a href="/skola/<?= $ucitel["skola_id"] ?>">
+                            <p>Pracuje v: <?= $ucitel["nazev"] ?></p>
+                        </a>
 
                     </article>
 
@@ -49,7 +49,7 @@
     </div>
 
     <div class="hledat row">
-        <form action="/vyhledejucitele/" method=POST>
+        <form action="/vyhledejucitele" method=POST>
             <div class="hledat-ucitel">
                 <label>Učitel</label>
                 <input type="text" name="search" placeholder="Zadejte jméno a příjmení">

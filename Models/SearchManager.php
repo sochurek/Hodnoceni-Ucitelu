@@ -7,10 +7,11 @@ class SearchManager
     {
         return Db::query(
             "
-        SELECT *
-        FROM HU.ucitel
+        SELECT skola.nazev, skola.id as skola_id, ucitel.id, ucitel.jmeno, ucitel.obrazek, ucitel.email
+        FROM HU.skola
+        INNER JOIN ucitel on skola.id = ucitel.skola_id
         WHERE ucitel.jmeno like '%$search%'
-        ORDER BY ucitel.jmeno DESC;"
+        ORDER BY ucitel.jmeno ASC;"
         );
     }
 }
