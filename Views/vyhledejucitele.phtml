@@ -1,0 +1,60 @@
+<?php if (isset($vyhledaniucitele)) : ?>
+    <section>
+        <div class="container">
+
+            <div class="row" class="text-center">
+                <h1>Vyhledaní Učitelé</h1>
+            </div>
+
+
+            <div class="row text-center">
+
+                <?php foreach ($vyhledaniucitele as $ucitel) : ?>
+                    <article class=row>
+
+                        <?php if (isset($ucitel["obrazek"])) : ?>
+                            <img style="height: 250px;" alt="<?= $ucitel["jmeno"] ?>-obrazek" src="<?= $ucitel["obrazek"] ?>">
+                        <?php endif; ?>
+
+                      
+
+                        <a href="/ucitel/<?= $ucitel["id"] ?>">
+                            <h3><?= $ucitel["jmeno"] ?></h3>
+                        </a>
+
+                        <p>
+                            Kontaktní email:
+                            <?= $ucitel["email"] ?>
+                        </p>
+
+                        <p>
+                            Pracuje v: <?= $ucitel["nazev"] ?>
+                        </p>
+
+                    </article>
+
+                    <br>
+                    <br>
+                <?php endforeach; ?>
+            </div>
+
+        </div>
+    </section>
+
+<?php endif; ?>
+
+<div class="container hledatD">
+    <div class="row">
+        <h1>Najdi dalšího učitele</h1>
+    </div>
+
+    <div class="hledat row">
+        <form action="/vyhledejucitele/" method=POST>
+            <div class="hledat-ucitel">
+                <label>Učitel</label>
+                <input type="text" name="search" placeholder="Zadejte jméno a příjmení">
+                <button type="submit"><img src="/vendor/img/search.png"></button>
+            </div>
+        </form>
+    </div>
+</div>

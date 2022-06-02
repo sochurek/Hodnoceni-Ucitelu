@@ -84,7 +84,7 @@ function onkeydown(e) {
     );
     if (hitObsta(updatedCoords, obstacle)) {
       xaxis--;
-      alert("I am an alert box!");
+      alert("Narazili jste do boxu!");
     }
   } else if (e.keyCode == 65 && xaxis > 0) {
     xaxis--;

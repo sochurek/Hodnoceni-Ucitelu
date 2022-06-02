@@ -4,12 +4,12 @@
     </div>
 
     <div class="hledat row">
-        <form>
+        <form action="/vyhledejucitele/" method=POST>
             <div class="hledat-ucitel">
                 <label>Učitel</label>
-                <input type="text" placeholder="Zadejte jméno a příjmení">
+                <input type="text" name="search" placeholder="Zadejte jméno a příjmení">
+                <button type="submit"><img src="/vendor/img/search.png"></button>
             </div>
-            <button type="submit"><img src="/vendor/img/search.png"></button>
         </form>
     </div>
 </div>

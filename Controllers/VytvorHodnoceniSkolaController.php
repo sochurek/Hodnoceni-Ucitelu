@@ -1,17 +1,15 @@
 <?php
-class VytvorHodnoceniController extends Controller
+class VytvorHodnoceniSkolaController extends Controller
 {
     function process($params)
     {
         // Header of page (title)
         $this->header["title"] = "Vytvoření Hodnocení";
-        $this->header["description"] =
-            "Na této stránce se vkládají články do databáze.";
 
         $this->data["formular"] = $_POST;
-        $this->data["idckoo"] = $params[0];
+        $this->data["idcko_skola"] = $params[0];
 
-        $iducitele = $params[0];
+        $idskoly = $params[0];
 
         $sprostaSlova = array(
             "akcizák",
@@ -209,20 +207,20 @@ class VytvorHodnoceniController extends Controller
         $matches = 0;
 
         if (isset($_POST["zprava"])) {
-            $hodnoceni = new Hodnoceni(null, $iducitele, $_POST["pocet_hvezd"], $_POST["zprava"]);
+            $hodnoceni = new HodnoceniSkola(null, $idskoly, $_POST["pocet_hvezd"], $_POST["zprava"]);
 
             foreach ($sprostaSlova as $slova) {
                 $matches += (strpos($_POST["zprava"], $slova) !== false) ? 1 : 0;
             }
             if ($matches == 0) {
-                $hodnoceni = new Hodnoceni(null, $iducitele, $_POST["pocet_hvezd"], $_POST["zprava"]);
-                HodnoceniManager::insertHodnoceni($hodnoceni);
-                header("Location: /ucitel/$iducitele");
+                $hodnoceni = new HodnoceniSkola(null, $idskoly, $_POST["pocet_hvezd"], $_POST["zprava"]);
+                HodnoceniManager::insertHodnoceniSkola($hodnoceni);
+                header("Location: /skola/$idskoly");
                 die();
             }
         }
 
         // Setup layout
-        $this->view = "vytvorhodnoceni";
+        $this->view = "vytvorhodnoceniskola";
     }
 }

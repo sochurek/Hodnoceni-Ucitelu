@@ -16,6 +16,16 @@
         <?= $school->email ?>
     </p>
 
+    <p>Průměrný počet hvězd: <?= number_format($hvezdy, 2) ?></p>
+
+    <a href="/vytvorhodnoceniskola/<?= $school->id ?>">
+        <button id="hodnoceniBtn">Napiš Hodnocení</button>
+    </a>
+
+    <br>
+
+
+
     <div class="container">
 
         <h3 class="nadpis">Učitelé v této škole</h3>
@@ -32,6 +42,27 @@
             <?php endforeach; ?>
         </div>
     </div>
+
+    <?php foreach ($hodnoceniskola as $hodnoceni) : ?>
+
+        <article class=row>
+            <p>
+                Počet hvězd: <?= $hodnoceni["pocet_hvezd"] ?>
+            </p>
+            <p>
+                Hodnocení: <?= $hodnoceni["zprava"] ?>
+            </p>
+
+            <form action="/skola/<?= $school->id ?>" method="POST">
+                <input type="hidden" name="report_id" value="<?= $hodnoceni["id"] ?>">
+                <input type="submit" name="report" value="Nahlaš Hodnocení">
+            </form>
+
+        </article>
+
+        <br>
+
+    <?php endforeach; ?>
 
 
 </div>

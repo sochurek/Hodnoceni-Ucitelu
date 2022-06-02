@@ -5,8 +5,11 @@ class DomovController extends Controller
     {
         // Header of page (title)
         $this->header["title"] = "Domovská stránka";
-        $this->header["description"] = "Hlavní stránka našeho webu";
 
+        if (isset($_POST["search"])) {
+            header("Location: /vyhledejucitele");
+            die();
+        }
 
         // Setup layout
         $this->view = "domov";
