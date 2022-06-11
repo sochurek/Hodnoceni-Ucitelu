@@ -1,15 +1,29 @@
 <div class=container>
-    <div class=row>
-        <h1>Přidej a vlož si hodnocení do databáze!</h1>
-        <p>Toto je nástroj, jak přidat hodnocení do DB.</p>
+    <div>
+        <h1 class="h1">Přidej hodnocení do databáze!</h1>
     </div>
     <div class=row>
-        <form method=POST action="/vytvorhodnoceni/<?= $idckoo ?>">
-            <label for=pocet_hvezd>Počet hvězd</label>
-            <input type="text" name=pocet_hvezd placeholder="Počet hvězd" required>
-            <label for=zprava>Hodnocení:</label>
-            <textarea rows="5" cols="80" type=text name=zprava placeholder="Hodnocení..." required></textarea>
-            <input name="submit_hodnoceni" type=submit value="Odeslat">
+        <form class="form" method=POST action="/vytvorhodnoceni/<?= $idckoo ?>">
+
+            <div>
+                <label class="p" for=pocet_hvezd>Počet hvězd</label>
+            </div>
+
+            <div>
+                <input type="number" min="0" max="5" step="1" name=pocet_hvezd placeholder="Počet hvězd" required>
+            </div>
+
+            <div>
+                <label class="p" for=zprava>Hodnocení:</label>
+            </div>
+
+            <div>
+                <textarea rows="5" cols="80" type=text name=zprava placeholder="Hodnocení..." required></textarea>
+            </div>
+
+            <div>
+                <input class="buttonHodnoceni" name="submit_hodnoceni" type=submit value="Odeslat">
+            </div>
         </form>
     </div>
 </div>

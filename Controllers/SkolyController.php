@@ -2,11 +2,11 @@
 
 class SkolyController extends Controller {
     function process($params) {
+
         // Header of page (title)
         $this->header["title"] = "Školy";
-        $this->header["description"] = "Výpis škol";
 
-
+        // Data z DB potřebné pro funkci stránky
         $this->data["schools"] = SchoolManager::getAllSchools();
 
         // Setup layout

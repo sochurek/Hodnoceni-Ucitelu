@@ -1,39 +1,3 @@
-h1 {
-  color: black;
-}
-
-.dark-mode-body {
-  background-color: #000000;
-}
-
-.dark-mode-header {
-  background-color: #3d0000;
-}
-
-.dark-mode-menu {
-  background-color: #950101;
-}
-
-.dark-mode-text {
-  color: #FF0000;
-}
-
-.light-mode-body {
-  background-color: #f0f0f5;
-}
-
-.light-mode-header {
-  background-color: #8b0000;
-}
-
-.light-mode-menu {
-  background-color: #990000;
-}
-
-.dark-mode-text {
-  color: white;
-}
-
 header {
   background-color: #8b0000;
   position: relative;
@@ -49,12 +13,14 @@ header {
   font-weight: bold;
   padding: 10px 0px 10px 0px;
   margin-left: 10px;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .header2 {
   font-size: 17px;
   margin-left: 10px;
   margin-bottom: 15px;
+  font-family: 'Montserrat', sans-serif;
 }
 
 body {
@@ -62,6 +28,7 @@ body {
   background-size: contain;
   background-color: #f0f0f5;
   margin: 0 auto;
+  font-family: 'Roboto', sans-serif;
 }
 
 .menu {
@@ -84,29 +51,15 @@ body {
 }
 
 .menuk {
-  right: auto;
   float: right;
 }
 
-footer {
-  width: 100%;
-  bottom: 0px;
-  background-color: #8b0000;
-  color: #fff;
-  position: absolute;
-  padding-top: 20px;
-  padding-bottom: 50px;
-  text-align: center;
-  font-size: 30px;
-  font-weight: bold;
-}
-
-h1 {
+.h1 {
   font-size: 4vw;
-  font-weight: 500;
   color: black;
+  font-weight: 500;
   text-align: center;
-  padding-top: 17%;
+  padding-top: 10%;
 }
 
 .hledatD {
@@ -133,6 +86,7 @@ h1 {
   border: 0;
   outline: none;
   background: transparent;
+  width: auto;
 }
 
 .hledat form button {
@@ -143,11 +97,12 @@ h1 {
   border: 0;
   outline: none;
   cursor: pointer;
+  float: right;
+  margin-top: -10%;
 }
 
 .hledat form button img {
   width: 15px;
-  margin-top: 5px;
 }
 
 .hledat form label {
@@ -176,6 +131,241 @@ h1 {
   text-align: center;
 }
 
-a {
+.a {
   color: black;
+}
+
+.p {
+  color: black;
+}
+
+.drkmdBtn {
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  color: #FFFFFF;
+  font-size: 20px;
+  font-weight: 100;
+  padding: 11mpx 16px;
+  background-color: #626262;
+  border: solid #525252 1px;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  margin-left: -10%;
+  font-family: 'Roboto', sans-serif;
+}
+
+.drkmdBtn:hover {
+  background: #707070;
+  border: solid #707070 1px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  text-decoration: none;
+}
+
+.clmns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  text-align: center;
+}
+
+.hodnoceni {
+  width: 300px;
+  word-wrap: break-word;
+  margin-left: 9%;
+}
+
+.h2 {
+  color: black;
+  font-weight: 500;
+  text-align: center;
+  padding-top: 17%;
+}
+
+.clmns2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  text-align: center;
+}
+
+.ucitelHod {
+  -webkit-columns: 40px 2;
+  -moz-columns: 60px 2;
+  columns: 60px 2;
+}
+
+.info {
+  margin-top: 5%;
+}
+
+.ucitel {
+  margin-right: 20%;
+  margin-left: -20%;
+}
+
+.buttonHodnoceni {
+  appearance: none;
+  background-color: #FAFBFC;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+  box-sizing: border-box;
+  color: #24292E;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  padding: 6px 16px;
+  position: relative;
+  transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+  word-wrap: break-word;
+}
+
+.buttonHodnoceni:hover {
+  background-color: #F3F4F6;
+  text-decoration: none;
+  transition-duration: 0.1s;
+}
+
+.buttonHodnoceni:disabled {
+  background-color: #FAFBFC;
+  border-color: rgba(27, 31, 35, 0.15);
+  color: #959DA5;
+  cursor: default;
+}
+
+.buttonHodnoceni:active {
+  background-color: #EDEFF2;
+  box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
+  transition: none 0s;
+}
+
+.buttonHodnoceni:focus {
+  outline: 1px transparent;
+}
+
+.buttonHodnoceni:before {
+  display: none;
+}
+
+.buttonHodnoceni:-webkit-details-marker {
+  display: none;
+}
+
+.reportButton {
+  appearance: none;
+  background-color: #FAFBFC;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+  box-sizing: border-box;
+  color: #24292E;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 15px;
+  list-style: none;
+  padding: 5px 11px;
+  position: relative;
+  transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+  word-wrap: break-word;
+}
+
+.reportButton:hover {
+  background-color: #F3F4F6;
+  text-decoration: none;
+  transition-duration: 0.1s;
+}
+
+.reportButton:disabled {
+  background-color: #FAFBFC;
+  border-color: rgba(27, 31, 35, 0.15);
+  color: #959DA5;
+  cursor: default;
+}
+
+.reportButton:active {
+  background-color: #EDEFF2;
+  box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
+  transition: none 0s;
+}
+
+.reportButton:focus {
+  outline: 1px transparent;
+}
+
+.reportButton:before {
+  display: none;
+}
+
+.reportButton:-webkit-details-marker {
+  display: none;
+}
+
+.form {
+  width: auto;
+  margin-left: 8%;
+}
+
+.form label {
+  text-align: left;
+  margin-top: 2%;
+}
+
+.form input {
+  width: 10%;
+}
+
+/*-----------------------------------*/
+
+.dark-mode-a {
+  color: white;
+}
+
+.dark-mode-p {
+  color: white;
+}
+
+.dark-mode-h1 {
+  color: white;
+  font-size: 4vw;
+  font-weight: 500;
+  text-align: center;
+  padding-top: 10%;
+}
+
+.dark-mode-h2 {
+  color: white;
+  font-weight: 500;
+  text-align: center;
+  padding-top: 17%;
+}
+
+.dark-mode-body {
+  background-color: #1a1a1a;
+}
+
+.light-mode-body {
+  background-position: center;
+  background-size: contain;
+  background-color: #f0f0f5;
+  margin: 0 auto;
 }

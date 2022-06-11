@@ -3,7 +3,7 @@
         <div class="container">
 
             <div class="row" class="text-center">
-                <h1>Vyhledaní Učitelé</h1>
+                <h1 id="bigBoy" class="h1">Vyhledaní Učitelé</h1>
             </div>
 
 
@@ -18,16 +18,16 @@
 
 
 
-                        <a href="/ucitel/<?= $ucitel["id"] ?>">
+                        <a class="a" href="/ucitel/<?= $ucitel["id"] ?>">
                             <h3><?= $ucitel["jmeno"] ?></h3>
                         </a>
 
-                        <p>
+                        <p class="p">
                             Kontaktní email:
                             <?= $ucitel["email"] ?>
                         </p>
 
-                        <a href="/skola/<?= $ucitel["skola_id"] ?>">
+                        <a class="a" href="/skola/<?= $ucitel["skola_id"] ?>">
                             <p>Pracuje v: <?= $ucitel["nazev"] ?></p>
                         </a>
 
@@ -45,13 +45,13 @@
 
 <div class="container hledatD">
     <div class="row">
-        <h1>Najdi dalšího učitele</h1>
+        <h1 class="h1" id="bigBoy2">Najdi dalšího učitele</h1>
     </div>
 
     <div class="hledat row">
         <form action="/vyhledejucitele" method=POST>
             <div class="hledat-ucitel">
-                <label>Učitel</label>
+                <label style="color: black;">Učitel</label>
                 <input type="text" name="search" placeholder="Zadejte jméno a příjmení">
                 <button type="submit"><img src="/vendor/img/search.png"></button>
             </div>

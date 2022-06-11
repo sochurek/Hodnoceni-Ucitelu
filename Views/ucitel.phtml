@@ -1,50 +1,67 @@
 <div class="container">
 
-    <?php if (isset($ucitel->obrazek)) : ?>
-        <img style="height: 250px;" alt="<?= $ucitel->jmeno ?>-obrazek" src="<?= $ucitel->obrazek ?>">
-    <?php endif; ?>
+    <div class="clmns2">
+        <div class="item">
+            <div class="ucitel">
+                <h2 class="h2"><?= $ucitel->jmeno ?></h2>
 
-    <h3><?= $ucitel->jmeno ?></h3>
+                <?php if (isset($ucitel->obrazek)) : ?>
+                    <img style="height: 250px;" alt="<?= $ucitel->jmeno ?>-obrazek" src="<?= $ucitel->obrazek ?>">
+                <?php endif; ?>
 
-    <p>
-        Kontaktní email:
-        <?= $ucitel->email ?>
-    </p>
+                <div class="info">
+                    <p>
+                        Kontaktní email:
+                        <a class="a" href="mailto:<?= $ucitel->email ?>">
+                            <?= $ucitel->email ?>
+                        </a>
+                    </p>
 
-    <a href="/skola/<?= $ucitel->skola_id ?>">
-        <p>Pracuje v: <?= $ucitel->skola_nazev ?></p>
-    </a>
+                    <a class="a" href="/skola/<?= $ucitel->skola_id ?>">
+                        <p>Pracuje v: <?= $ucitel->skola_nazev ?></p>
+                    </a>
 
-    <a href="/vytvorhodnoceni/<?= $ucitel->id ?>">
-        <button id="hodnoceniBtn">Napiš Hodnocení</button>
-    </a>
-
-    <br>
-
-    <p>Průměrný počet hvězd: <?= number_format($hvezdy,2) ?></p>
-
-
-
-    <?php foreach ($hodnocenii as $hodnoceni) : ?>
-
-        <article class=row>
-            <p>
-                Počet hvězd: <?= $hodnoceni["pocet_hvezd"] ?>
-            </p>
-            <p>
-                Hodnocení: <?= $hodnoceni["zprava"] ?>
-            </p>
-
-            <form action="/ucitel/<?= $ucitel->id ?>" method="POST">
-                <input type="hidden" name="report_id" value="<?= $hodnoceni["id"] ?>">
-                <input type="submit" name="report" value="Nahlaš Hodnocení">
-            </form>
+                    <p>Průměrný počet hvězd: <?= number_format($hvezdy, 2) ?></p>
 
 
-        </article>
+                    <a href="/vytvorhodnoceni/<?= $ucitel->id ?>">
+                        <button class="buttonHodnoceni" id="hodnoceniBtn">Napiš Hodnocení</button>
+                    </a>
 
-        <br>
+                    <br>
 
-    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
 
+        <div class="item">
+
+            <h2 class="h2">Hodnocení Učitele</h2>
+
+            <div class="ucitelHod">
+                <?php foreach ($hodnocenii as $hodnoceni) : ?>
+
+                    <article class=row>
+                        <p>
+                            Počet hvězd: <?= $hodnoceni["pocet_hvezd"] ?>
+                        </p>
+                        <p>
+                            Hodnocení: <?= $hodnoceni["zprava"] ?>
+                        </p>
+
+                        <form action="/ucitel/<?= $ucitel->id ?>" method="POST">
+                            <input type="hidden" name="report_id" value="<?= $hodnoceni["id"] ?>">
+                            <button class="reportButton" type="submit" name="report">Nahlaš Hodnocení</button>
+                        </form>
+
+
+                    </article>
+
+                    <br>
+
+                <?php endforeach; ?>
+            </div>
+
+        </div>
+    </div>
 </div>

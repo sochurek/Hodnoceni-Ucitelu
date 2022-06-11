@@ -1,6 +1,9 @@
+
+// Otevře nový http request
 var request = new XMLHttpRequest();
 request.open('GET', 'http://ip-api.com/json/', true);
 
+// Když se načte request, získají se ze stránky http://ip-api.com/json všechny potřebná data o učivateli a zobrazí se na mapě + vypíší se na stránku
 request.onload = function () {
 
     var data = JSON.parse(this.response);
@@ -21,4 +24,6 @@ request.onload = function () {
     layer.addMarker(marker);
 
 }
+
+// request se pošle
 request.send();

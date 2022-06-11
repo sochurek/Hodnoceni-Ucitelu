@@ -1,8 +1,10 @@
 <?php
 
+// Třída pro příkazy které přistupují k databázi pro Vyhledávání učitelů
 class SearchManager
 {
 
+    // Metoda, která si vytáhne z DB všechny učitele, kteří se jménem podobají inputu
     public static function getSearch($search): array
     {
         return Db::query(

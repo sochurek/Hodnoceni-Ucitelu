@@ -5,14 +5,15 @@ class VytvorHodnoceniController extends Controller
     {
         // Header of page (title)
         $this->header["title"] = "Vytvoření Hodnocení";
-        $this->header["description"] =
-            "Na této stránce se vkládají články do databáze.";
 
+        // Data z DB potřebné pro funkci stránky
         $this->data["formular"] = $_POST;
         $this->data["idckoo"] = $params[0];
 
+        // ID učitele které se bere z URL
         $iducitele = $params[0];
 
+        // Array sprostých slov které se filtrují z hodnocení aby nedošlo k přidání hodnocení obsahující sprostá slova
         $sprostaSlova = array(
             "akcizák",
             "ambažúra",
@@ -189,6 +190,7 @@ class VytvorHodnoceniController extends Controller
             "šukání",
             "šulda",
             "šulín",
+            "ušoplesk",
             "v piči",
             "vandr",
             "vošoust",
@@ -206,11 +208,11 @@ class VytvorHodnoceniController extends Controller
             "zprcat"
         );
 
+        // proměnná, která když nebude 0 nezapíše se hodnocení do DB
         $matches = 0;
 
+        // Kód, který když se submitne form při vytvoření hodnocení, zkontroluje jestli hodnocení neobsahuje sprostá slova, pokud ne zavolá se metoda pro vklad hodnocení do DB, pokud ano zavolá se metoda pro odeslání vadného hodnocení E-mailem adminovi
         if (isset($_POST["zprava"])) {
-            $hodnoceni = new Hodnoceni(null, $iducitele, $_POST["pocet_hvezd"], $_POST["zprava"]);
-
             foreach ($sprostaSlova as $slova) {
                 $matches += (strpos($_POST["zprava"], $slova) !== false) ? 1 : 0;
             }
@@ -218,6 +220,11 @@ class VytvorHodnoceniController extends Controller
                 $hodnoceni = new Hodnoceni(null, $iducitele, $_POST["pocet_hvezd"], $_POST["zprava"]);
                 HodnoceniManager::insertHodnoceni($hodnoceni);
                 header("Location: /ucitel/$iducitele");
+                die();
+            } else {
+                $hodnoceni = new Hodnoceni(null, $iducitele, $_POST["pocet_hvezd"], $_POST["zprava"]);
+                HodnoceniManager::invalidHodnoceni($hodnoceni);
+                header("Location: /vytvorhodnoceni/$iducitele");
                 die();
             }
         }

@@ -6,11 +6,14 @@ class VytvorHodnoceniSkolaController extends Controller
         // Header of page (title)
         $this->header["title"] = "Vytvoření Hodnocení";
 
+        // Data z DB potřebné pro funkci stránky
         $this->data["formular"] = $_POST;
         $this->data["idcko_skola"] = $params[0];
 
+        // ID učitele které se bere z URL
         $idskoly = $params[0];
 
+        // Array sprostých slov které se filtrují z hodnocení aby nedošlo k přidání hodnocení obsahující sprostá slova
         $sprostaSlova = array(
             "akcizák",
             "ambažúra",
@@ -187,6 +190,7 @@ class VytvorHodnoceniSkolaController extends Controller
             "šukání",
             "šulda",
             "šulín",
+            "ušoplesk",
             "v piči",
             "vandr",
             "vošoust",
@@ -204,8 +208,10 @@ class VytvorHodnoceniSkolaController extends Controller
             "zprcat"
         );
 
+        // proměnná, která když nebude 0 nezapíše se hodnocení do DB
         $matches = 0;
 
+        // Kód, který když se submitne form při vytvoření hodnocení, zkontroluje jestli hodnocení neobsahuje sprostá slova, pokud ne zavolá se metoda pro vklad hodnocení do DB, pokud ano zavolá se metoda pro odeslání vadného hodnocení E-mailem adminovi
         if (isset($_POST["zprava"])) {
             $hodnoceni = new HodnoceniSkola(null, $idskoly, $_POST["pocet_hvezd"], $_POST["zprava"]);
 
@@ -216,6 +222,11 @@ class VytvorHodnoceniSkolaController extends Controller
                 $hodnoceni = new HodnoceniSkola(null, $idskoly, $_POST["pocet_hvezd"], $_POST["zprava"]);
                 HodnoceniManager::insertHodnoceniSkola($hodnoceni);
                 header("Location: /skola/$idskoly");
+                die();
+            } else {
+                $hodnoceni = new HodnoceniSkola(null, $idskoly, $_POST["pocet_hvezd"], $_POST["zprava"]);
+                HodnoceniManager::invalidHodnoceniSkola($hodnoceni);
+                header("Location: /vytvorhodnoceni/$idskoly");
                 die();
             }
         }

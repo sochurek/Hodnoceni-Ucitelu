@@ -1,3 +1,5 @@
+
+// metody pro práci s canvasem
 var canvas;
 var context;
 var ctx;
@@ -6,14 +8,16 @@ var yaxis = 10;
 var obstacle = [];
 var relative;
 
-window.onload = function () {
+// při načtení okna se zavolá funkce darkmode a nastaví se canvas, context a ctx + spustí se metoda drawCanv
+window.onload = function loadCanv() {
+  darkmode();
   canvas = document.getElementById("canvas");
   context = canvas.getContext("2d");
   ctx = canvas.getContext("2d");
-
   drawCanv();
-};
+}
 
+// blok který se zobrazuje v canvasu (není průchodný)
 var chad = {
   height: 50,
   width: 50,
@@ -21,11 +25,13 @@ var chad = {
   y: 100,
 };
 
+// hráč, který se pohybuje na mapě
 var player = {
   height: 10,
   width: 10,
 };
 
+// Metoda, která vypisuje canvas + zapisuje souřadnice do <p> tagu
 function drawCanv() {
   context.beginPath();
   context.fillStyle = "#ffffff";
@@ -55,6 +61,7 @@ function drawCanv() {
   document.getElementById("sourady").innerHTML = yaxis;
 }
 
+// Metoda, která zjišťuje jestli hráč narazil do překážky
 function hitObsta(player, array) {
   for (var value of array) {
     if (
@@ -70,6 +77,9 @@ function hitObsta(player, array) {
   return false;
 }
 
+// Metoda, která zjistí jaké klávesy se stiskly -> pokud se stiskne W,A,S,D posune se hráč,
+// pokud hráč narazil do překážky následnuje alert s hláškou, po vyhodnocení se znovu zavolá metoda drawCanv.
+// Hetoda zakazuje hráči "opustit" canvas -> pokud se ho dotkne nepustí ho dále ve směru překážky (border, chad)
 function onkeydown(e) {
   if (e.keyCode == 68 && xaxis + 10 < canvas.width) {
     xaxis++;
@@ -132,4 +142,5 @@ function onkeydown(e) {
   drawCanv();
 }
 
+// Event Listener který zaznamenává kliknutí na klávesnici
 window.addEventListener("keydown", onkeydown);

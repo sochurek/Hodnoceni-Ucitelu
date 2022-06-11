@@ -3,7 +3,7 @@
         <div class="container">
 
             <div class="row" class="text-center">
-                <h1>Učitelé</h1>
+                <h1 class="h1">Učitelé</h1>
             </div>
 
 
@@ -16,18 +16,20 @@
                             <img style="height: 250px;" alt="<?= $ucitel["jmeno"] ?>-obrazek" src="<?= $ucitel["obrazek"] ?>">
                         <?php endif; ?>
 
-                      
 
-                        <a href="/ucitel/<?= $ucitel["id"] ?>">
+
+                        <a class="a" href="/ucitel/<?= $ucitel["id"] ?>">
                             <h3><?= $ucitel["jmeno"] ?></h3>
                         </a>
 
-                        <p>
+                        <p class="p">
                             Kontaktní email:
-                            <?= $ucitel["email"] ?>
+                            <a class="a" href="mailto:<?= $ucitel["email"] ?>">
+                                <?= $ucitel["email"] ?>
+                            </a>
                         </p>
 
-                        <a href="/skola/<?= $ucitel["skola_id"] ?>">
+                        <a class="a" href="/skola/<?= $ucitel["skola_id"] ?>">
                             <p>Pracuje v: <?= $ucitel["nazev"] ?></p>
                         </a>
 

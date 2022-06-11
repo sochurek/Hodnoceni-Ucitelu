@@ -1,4 +1,6 @@
 <?php
+
+// Nastavení zóny
 mb_internal_encoding("UTF-8");
 date_default_timezone_set("Europe/Prague");
 
@@ -16,8 +18,10 @@ function autoload($class)
 
 spl_autoload_register("autoload");
 
-Db::connect("185.229.119.199", "spirys", "#$*795eV5w79o667", "HU");
+// Připojení do DB
+Db::connect("185.229.119.199", "hu", "pe#9de6o#h77zD", "HU");
 
+// nastavení routeru
 $router = new RouterController();
 $router->process(array($_SERVER["REQUEST_URI"]));
 $router->renderView();

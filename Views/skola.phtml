@@ -1,68 +1,84 @@
 <div class="container">
-    <?php if (isset($school->obrazek)) : ?>
-        <img style="height: 250px;" alt="<?= $school->nazev ?>-obrazek" src="<?= $school->obrazek ?>">
-    <?php endif; ?>
+    <div class="clmns">
+        <div class="item">
 
+            <h2 class="h2"><?= $school->nazev ?></h2>
 
-    <h3><?= $school->nazev ?></h3>
+            <?php if (isset($school->obrazek)) : ?>
+                <img style="height: 250px;" alt="<?= $school->nazev ?>-obrazek" src="<?= $school->obrazek ?>">
+            <?php endif; ?>
 
-    <p>
-        Adresa:
-        <?= $school->adresa ?>
-    </p>
+            <br>
 
-    <p>
-        Kontaktní email:
-        <?= $school->email ?>
-    </p>
+            <div class="info">
+                <p class="p">
+                    Adresa:
+                    <?= $school->adresa ?>
+                </p>
 
-    <p>Průměrný počet hvězd: <?= number_format($hvezdy, 2) ?></p>
-
-    <a href="/vytvorhodnoceniskola/<?= $school->id ?>">
-        <button id="hodnoceniBtn">Napiš Hodnocení</button>
-    </a>
-
-    <br>
-
-
-
-    <div class="container">
-
-        <h3 class="nadpis">Učitelé v této škole</h3>
-        <div class="container">
-            <?php foreach ($ucitele as $ucitel) : ?>
-                <article class=row>
-                    <a href="/ucitel/<?= $ucitel["id"] ?>">
-                        <p><?= $ucitel["jmeno"] ?></p>
+                <p class="p">
+                    Kontaktní email:
+                    <a class="a" href="mailto:<?= $school->email ?>">
+                        <?= $school->email ?>
                     </a>
+                </p>
 
-                </article>
+                <p class="p">
+                    Webová stránka:
+                    <a class="a" href="https://<?= $school->webpage ?>" target="_blank">
+                        https://<?= $school->webpage ?>
+                    </a>
+                </p>
 
+                <p class="p">Průměrný počet hvězd: <?= number_format($hvezdy, 2) ?></p>
+
+                <a href="/vytvorhodnoceniskola/<?= $school->id ?>">
+                    <button class="buttonHodnoceni" role="button" id="hodnoceniBtn">Napiš Hodnocení</button>
+                </a>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="ucitele">
+                <h2 class="h2">Učitelé v této škole</h2>
+
+                <?php foreach ($ucitele as $ucitel) : ?>
+                    <article class=row>
+                        <a class="a" href="/ucitel/<?= $ucitel["id"] ?>">
+                            <p><?= $ucitel["jmeno"] ?></p>
+                        </a>
+
+                    </article>
+
+                    <br>
+                <?php endforeach; ?>
+            </div>
+        </div>
+
+        <div class="item">
+
+            <h2 class="h2">Hodnocení Školy</h2>
+
+            <?php foreach ($hodnoceniskola as $hodnoceni) : ?>
+                <div class="hodnoceni">
+                    <article class=row>
+                        <p>
+                            Počet hvězd: <?= $hodnoceni["pocet_hvezd"] ?>
+                        </p>
+                        <p>
+                            Hodnocení: <?= $hodnoceni["zprava"] ?>
+                        </p>
+
+                        <form action="/skola/<?= $school->id ?>" method="POST">
+                            <input type="hidden" name="report_id" value="<?= $hodnoceni["id"] ?>">
+                            <button class="reportButton" type="submit" name="report">Nahlaš Hodnocení</button>
+                        </form>
+
+                    </article>
+                </div>
                 <br>
+
             <?php endforeach; ?>
         </div>
     </div>
-
-    <?php foreach ($hodnoceniskola as $hodnoceni) : ?>
-
-        <article class=row>
-            <p>
-                Počet hvězd: <?= $hodnoceni["pocet_hvezd"] ?>
-            </p>
-            <p>
-                Hodnocení: <?= $hodnoceni["zprava"] ?>
-            </p>
-
-            <form action="/skola/<?= $school->id ?>" method="POST">
-                <input type="hidden" name="report_id" value="<?= $hodnoceni["id"] ?>">
-                <input type="submit" name="report" value="Nahlaš Hodnocení">
-            </form>
-
-        </article>
-
-        <br>
-
-    <?php endforeach; ?>
-
-
 </div>
