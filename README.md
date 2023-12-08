@@ -1,6 +1,8 @@
 # Hodnocení Učitelů
 Závěrečná práce z Webových Aplikací.
 
+(Web není funkční kvůli absenci databáze, která již zanikla. Můžete si však projít můj kód)
+
 Web se spustí když si stáhnete aplikaci Xampp: https://www.apachefriends.org/download.html
 a nainstalujete ji.
 
